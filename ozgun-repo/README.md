@@ -51,6 +51,7 @@ My program expects two input files (See the section, "Repo directory structure",
 
 * `log.csv`: EDGAR weblog data
 * `inactivity_period.txt`: Holds a single value denoting the period of inactivity that should be used to identify when a user session is over
+
 It creates one output file:
 * `sessionization.txt`
 

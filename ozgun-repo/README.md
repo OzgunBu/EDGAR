@@ -107,7 +107,7 @@ A Session object has the following attributes:
 FinishedSession: This is a list of Sessions that are just popped from the ActiveSessions. We need to sort the items in this list according to their moments and line numbers
 SortedSessions: Sorted version of the FinishedSession to be written to the output file
 
-![End of file illustration](images/end_of_file.png)
+![End of file illustration](images/my_idea.png)
 
 # Would have been nice to have
 

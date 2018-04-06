@@ -49,10 +49,10 @@ I am importing two Python modules:
 
 My program expects two input files (See the section, "Repo directory structure", for details on where these files should be located):
 
-* `log.csv`: EDGAR weblog data
-* `inactivity_period.txt`: Holds a single value denoting the period of inactivity that should be used to identify when a user session is over
+* `log.csv`: EDGAR weblog data inside `./input`
+* `inactivity_period.txt`: Holds a single value denoting the period of inactivity that should be used to identify when a user session is over, file should be inside `./input`
 
-It creates one output file:
+It creates one output file inside `./output`:
 * `sessionization.txt`
 
 

@@ -85,17 +85,8 @@ Some assumptions and preferred actions in case of errors in the input files:
 
 - I also assume a simple time zone as we are told not to care about the time zone field.
 
+- Challenge suggests us to focus on 6 fields, ip, date, time, cik, accession and extention: But I believe the fieldsa cik, accession and extnetions have no effect as long as they are there. Becasue, the challenge does not care about uniquness while counting the number of requests. These three fields can be used for idetifty unique documents/webpages. Hence in the code, they are not being used.
 
-- FUTURE:  output file to be written every so many lines maybe 
-
-cik 
-accession 
-extention
-
-
-('Skipped Row - Chronological Error:',row_str)
-print('Skipped Row - date/time format error:',row_str) 
-('Skipped Row - Missing field:',row_str)
 
 
 # Algorithm and Data Structures

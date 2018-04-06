@@ -1,0 +1,109 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red100\green56\blue32;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab529
+\pard\tx529\pardeftab529\pardirnatural
+
+\f0\fs22 \cf0 \CocoaLigature0 This document has two parts:\
+\
+- PART 1: Explantion of the code\
+- PART 2: Explanation of the test cases\
+\
+\
+==============\
+FILES\
+\
+This file has necessary functions and class definitions for sessionization.py\
+list of functions and class: \
+\
+def reading_row(row_str):\
+\
+def strip_date_time(date_str,time_str):\
+\
+def strip_date_time(date_str,time_str):\
+\
+def write_to_output_file(SortedSessions,fo):\
+\
+def pop_expired(ActiveSessions,current_moment,inactivity_duration,pop_all=False):\
+\
+def embed_last_entry_to_ActiveSessions(ActiveSessions,ip_str,moment,line_number):\
+\
+def clean_expired_sessions(ActiveSessions,current_moment,inactivity_duration,fo,pop_all=False):\
+\
+def Input_Output_file_operations(inactivity_filename,output_filename,log_filename):\
+\
+class Session(object):\
+\
+==================\
+Some assumptions and preferred actions in case of errors in the input files:\
+\
+- Due to some potential errors in the data file, some rows might not have the right format. In these cases, I will print out a warning to the screen and opt to skip that row.\
+- Some foreseen errors:\
+    - rows might not be in chronological order\
+    - rows might have missing values\
+- Missing input files: Warning to the user\
+- Empty input files\
+\
+\
+- I also assume a simple time zone as we are told not to care about the time zone field.\
+\
+- If in?? is less than 1, I will set it to 1.\
+- If in?? is greater than max , I will set it to max.\
+\
+- output file to be written every so many lines maybe \
+\cf2 \
+#cik = words[4] # any request (not necessarily unique) is counted as one, so I conclude that we do not need these fields\
+#accession = words[5] # any request (not necessarily unique) is counted as one, so I conclude that we do not need these fields\
+#extention = words[6] # any request (not necessarily unique) is counted as one, so I conclude that we do not need these fields\cf0 \
+\
+\
+('Skipped Row - Chronological Error:',row_str)\
+print('Skipped Row - date/time format error:',row_str) \
+('Skipped Row - Missing field:',row_str)\
+\
+==================\
+\
+\
+Needed data structures\
+I need the following data structures:\
+ActiveSessions: A dictionary for keeping active sessions where the keys are IDs\
+Each element in ActiveSessions is a Session object\
+A Session object has the following attributes:\
+- moment of the first request FR\
+- moment of the last request\
+- request counter\
+- line number\
+- session duration\
+- sort method __lt__\
+- ID\
+- print method __str__\
+FinishedSession: This is a list of Sessions that are just popped from the ActiveSessions. We need to sort the items in this list according to their moments and line numbers\
+SortedSessions: Sorted version of the FinishedSession to be written to the output file\
+\
+===================\
+\
+\
+Information regarding test cases I think about. The input / output files for the test cases are within folder insight_testsuite. test_1 is the one given by the challenge\
+\
+- TEST CASES\
+\
+'OK' means the output matches what I would expect.\
+\
+1)  folder name: test_1:  Given by the challenge itself - OK\
+2)  folder name: test_2:  Row entries are NOT in chronological order - OK\
+3)  folder name: test_3:  Empty log file - OK\
+4)  folder name: test_4:  Header row is there but no requests\
+5)  folder name: test_5:  Try rows that all come at the same time - OK\
+6)  folder name: test_6:  Try inactivity_duration to be 1 sec. - OK PS: the result makes sense to me but insight test fails ??\
+7)  folder name: test_7:  Try inactivity_duration to be <= 0 sec. - OK\
+8)  folder name: test_8:  Try inactivity_duration to be > 86400 sec. -OK\
+\
+9)  folder name: test_9:  Try with consecutive identical rows - OK\
+10) folder name: test_10: Try with a single request - OK\
+11) folder name: test_11: Try inactivity_duration to be 100 sec. - OK\
+12) folder name: test_12: Somewhat convoluted case of rows - OK\
+\
+13) folder name: test_13: inactivity_period.txt is missing - OK\
+14) folder name: test_14: log.csv is missing - OK\
+}

@@ -5,6 +5,7 @@
 4. [Prerequisites ](README.md#prerequisites)
 5. [Input Output Files ](README.md#input-output-files)
 6. [Source Files](README.md#source-files)
+7. [How to run?](README.md#how-to-run)
 7. [Assumptions and Preffered Actions](README.md#source-files)
 8. [Algorithm and Data Structures](README.md#algorithm-data-structures)
 9. [Test Cases](README.md#test-cases)
@@ -23,13 +24,13 @@
 
 # Project Title
 
-Insight Data Engineering Challenge: EDGAR
+Insight Data Engineering Challenge: EDGAR 
 
 # Introduction
 
 Many investors, researchers, journalists and others use the Securities and Exchange Commission's Electronic Data Gathering, Analysis and Retrieval (EDGAR) system to retrieve financial documents, whether they are doing a deep dive into a particular company's financials or learning new information that a company has revealed through their filings. 
 
-Data engineer's job is to build a pipeline to ingest that stream of data and calculate how long a particular user spends on EDGAR during a visit and how many documents that user requests during the session. 
+The task is to build a pipeline to ingest that stream of data and calculate how long a particular user spends on EDGAR during a visit and how many documents that user requests during the session. 
 
 # Challenge Link
 
@@ -50,16 +51,20 @@ My program expects two input files (See the section, "Repo directory structure",
 
 * `log.csv`: EDGAR weblog data
 * `inactivity_period.txt`: Holds a single value denoting the period of inactivity that should be used to identify when a user session is over
-
 It creates one output file:
 * `sessionization.txt`
 
 
-#Source Files
+# Source Files
+Source files are inside the `./src`
+* `sessionization.py`
+* `my_functions_classes.py`
 
-sessionization.py
-my_functions_classes.py
+# How to run
+Run the shell script named `./run.sh` in the top-most directory.
+Inside of the `./run.sh`, we have the following line:
 
+python ./src/sessionization.py ./input/log.csv ./input/inactivity_period.txt ./output/sessionization.txt
 
 # Assumptions and Preffered Actions
 

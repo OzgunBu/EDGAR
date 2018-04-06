@@ -115,7 +115,7 @@ SortedSessions: Sorted version of the FinishedSession to be written to the outpu
 Information regarding test cases I think about. The input / output files for the test cases are within folder insight_testsuite. test_1 is the one given by the challenge
 
 - TEST CASES
-
+Comment about the so-called fails
 'OK' means the output matches what I would expect.
 
 1)  folder name: test_1:  Given by the challenge itself - OK

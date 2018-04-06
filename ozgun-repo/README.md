@@ -107,7 +107,7 @@ I use the following data structures:
 - FinishedSession: This is a list of Sessions that are just popped from the ActiveSessions. We need to sort the items in this list according to their moments and line numbers
 - SortedSessions: Sorted version of the FinishedSession to be written to the output file
 
-A rough idea of my algorithm is illustrated in following image:
+A rough idea of my algorithm is illustrated in following image, boxes with the same color use the same function, this unification helps with debugging and future adoptations:
 
 ![End of file illustration](images/my_idea.png)
 
@@ -117,6 +117,15 @@ My program process every line of the log file one by one. Except the initilizati
 - If the time has been advanced, we should look which sessions can be considered expired (inactive). We pop them to a list, sort them according to their momentLR, linenumber. __lt__ is defined in session class definition for this purpose.
 
 - Then in any case: We contiue by adopting our dictionary of sessions (ActiveSesssions) according to the new session. It might result in a new key or an update on an existing key (ip)'s value. This update method is part of the session class definition.
+
+- If EOF is reached for log file, all remaining entries are selected to be remowed by (pop_all = True)
+
+To help understanding functions the code:
+
+- green box in the figure is the line: '((inactivity_duration)<(current_moment-session.momentLR).total_seconds()) or pop_all' in pop_expired()
+- red box in the figure is function: pop_expired()
+- blue box in the figure is function: clean_expired_sessions()
+
 
 
 

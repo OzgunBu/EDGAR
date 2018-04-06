@@ -89,25 +89,37 @@ Some assumptions and preferred actions in case of errors in the input files:
 
 
 
-# Algorithm and Data Structures
+# Algorithm and Data Structures:
 
-Needed data structures
-I need the following data structures:
-ActiveSessions: A dictionary for keeping active sessions where the keys are IDs
-Each element in ActiveSessions is a Session object
-A Session object has the following attributes:
-- moment of the first request FR
-- moment of the last request
-- request counter
-- line number
-- session duration
-- sort method __lt__
-- ID
-- print method __str__
-FinishedSession: This is a list of Sessions that are just popped from the ActiveSessions. We need to sort the items in this list according to their moments and line numbers
-SortedSessions: Sorted version of the FinishedSession to be written to the output file
+I use the following data structures:
+
+- ActiveSessions: A dictionary for keeping active sessions where the keys are IDs
+        Each element in ActiveSessions is a Session object
+- A Session object has the following attributes:
+    - moment of the first request FR
+    - moment of the last request
+    - request counter
+    - line number
+    - session duration
+    - sort method __lt__
+    - ID
+    - print method __str__
+- FinishedSession: This is a list of Sessions that are just popped from the ActiveSessions. We need to sort the items in this list according to their moments and line numbers
+- SortedSessions: Sorted version of the FinishedSession to be written to the output file
+
+A rough idea of my algorithm is illustrated in following image:
 
 ![End of file illustration](images/my_idea.png)
+
+My program process every line of the log file one by one. Except the initilization, for every new line the first thing is to check the moment:
+- If it is not advanced, clearly we will not declare any new expired sessions compare to our previous instant. 
+
+- If the time has been advanced, we should look which sessions can be considered expired (inactive). We pop them to a list, sort them according to their momentLR, linenumber. __lt__ is defined in session class definition for this purpose.
+
+- Then in any case: We contiue by adopting our dictionary of sessions (ActiveSesssions) according to the new session. It might result in a new key or an update on an existing key (ip)'s value. This update method is part of the session class definition.
+
+
+
 
 # Would have been nice to have
 

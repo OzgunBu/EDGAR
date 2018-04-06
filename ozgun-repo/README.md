@@ -8,6 +8,7 @@
 7. [How to run?](README.md#how-to-run)
 7. [Assumptions and Preffered Actions](README.md#source-files)
 8. [Algorithm and Data Structures](README.md#algorithm-data-structures)
+8. [Would have been nice to have](README.md#woul-have-been-nice-to-have)
 9. [Test Cases](README.md#test-cases)
 10. [How to test](README.md#how-to-test)
 11. [Example](README.md#example)
@@ -71,20 +72,21 @@ python ./src/sessionization.py ./input/log.csv ./input/inactivity_period.txt ./o
 
 Some assumptions and preferred actions in case of errors in the input files:
 
-- Due to some potential errors in the data file, some rows might not have the right format. In these cases, I will print out a warning to the screen and opt to skip that row and print a warning to the user
-    - rows might not be in chronological order --> Print 
-    - rows might have missing values --> 
-    - Missing input files: Warning to the user -->
-    - Empty input files -->
-    - invalid inactivity duration: -->Exception: not a valid inactivity duration. Check the inactivity_filename, valid range: [1,2, .. 86400]
+- Due to some potential errors in the data file, some requests rows might not have the right format. In these cases, I will print out a warning to the screen and opt to skip that row and print a warning to the user
+    - rows might not be in chronological order --> Print 'Skipped Row - Chronological Error ...'
+    - rows might have missing values --> Print 'Skipped Row - Missing field:'
+    - rows with invalid date and time --> Print 'Skipped Row - date/time format error:'
     - etc.
+
+- If there is an error within the header row of the log file, an exception is raised and user is warned to check the first row of the file
+- Missing input files: Warning to the user -->
+- invalid inactivity duration: -->Exception: not a valid inactivity duration. Check the inactivity_filename, valid range: [1,2, .. 86400]
+- etc.
 
 - I also assume a simple time zone as we are told not to care about the time zone field.
 
-- If in?? is less than 1, I will set it to 1.
-- If in?? is greater than max , I will set it to max.
 
-- output file to be written every so many lines maybe 
+- FUTURE:  output file to be written every so many lines maybe 
 
 cik 
 accession 
@@ -114,14 +116,17 @@ A Session object has the following attributes:
 FinishedSession: This is a list of Sessions that are just popped from the ActiveSessions. We need to sort the items in this list according to their moments and line numbers
 SortedSessions: Sorted version of the FinishedSession to be written to the output file
 
+# Would have been nice to have
+
+In the current form, the output file is opened once and closed once. But I imagine that, for a big input file it might be better to to open and close it every so many lines and event get a back up. Or better create smaller multiple output files.
+
+It would have been also very useful to have written the code such that, the code can run from the point it crashed, next time it is run.(If the user wants to continue to append tot he already processed results, not want to process them again). This is useful, as sometimes, we want to pause/exit a program and restart later on.
+
 # Test Cases
-
-
 
 Information regarding test cases I think about. The input / output files for the test cases are within folder insight_testsuite. test_1 is the one given by the challenge
 
 - TEST CASES
-Comment about the so-called fails
 'OK' means the output matches what I would expect.
 
 1)  folder name: test_1:  Given by the challenge itself - OK
@@ -143,7 +148,8 @@ Comment about the so-called fails
 
 
 # How to test
-
+ 
+Run the shell script named `./run_tests.sh` in the top-most directory. This will rn through all test-cases. You can verify the results by checking the output files or error messages.
 
 ## Testing the directory structure and output format
 

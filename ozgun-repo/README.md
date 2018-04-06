@@ -85,7 +85,7 @@ Some assumptions and preferred actions in case of errors in the input files:
 
 - I also assume a simple time zone as we are told not to care about the time zone field.
 
-- Challenge suggests us to focus on 6 fields, ip, date, time, cik, accession and extention: But I believe the fieldsa cik, accession and extnetions have no effect as long as they are there. Becasue, the challenge does not care about uniquness while counting the number of requests. These three fields can be used for idetifty unique documents/webpages. Hence in the code, they are not being used.
+- Challenge suggests us to focus on 6 fields, ip, date, time, cik, accession and extention: But I believe the fields `cik`, `accession` and `extentions` have no effect as long as they are there. Becasue, the challenge does not care about uniquness while counting the number of requests. These three fields can be used for identifying unique documents/webpages. Hence in my code, they are not being used.
 
 
 
@@ -106,6 +106,8 @@ A Session object has the following attributes:
 - print method __str__
 FinishedSession: This is a list of Sessions that are just popped from the ActiveSessions. We need to sort the items in this list according to their moments and line numbers
 SortedSessions: Sorted version of the FinishedSession to be written to the output file
+
+![End of file illustration](images/end_of_file.png)
 
 # Would have been nice to have
 

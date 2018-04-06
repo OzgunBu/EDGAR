@@ -58,8 +58,8 @@ It creates one output file inside `./output`:
 
 # Source Files
 Source files are inside the `./src`
-* `sessionization.py`
-* `my_functions_classes.py`
+* `sessionization.py` : This includes the main
+* `my_functions_classes.py` : This includes the functions and classes
 
 # How to run
 Run the shell script named `./run.sh` in the top-most directory.
@@ -71,13 +71,13 @@ python ./src/sessionization.py ./input/log.csv ./input/inactivity_period.txt ./o
 
 Some assumptions and preferred actions in case of errors in the input files:
 
-- Due to some potential errors in the data file, some rows might not have the right format. In these cases, I will print out a warning to the screen and opt to skip that row.
-- Some foreseen errors:
-- rows might not be in chronological order
-- rows might have missing values
-- Missing input files: Warning to the user
-- Empty input files
-
+- Due to some potential errors in the data file, some rows might not have the right format. In these cases, I will print out a warning to the screen and opt to skip that row and print a warning to the user
+    - rows might not be in chronological order --> Print 
+    - rows might have missing values --> 
+    - Missing input files: Warning to the user -->
+    - Empty input files -->
+    - invalid inactivity duration: -->Exception: not a valid inactivity duration. Check the inactivity_filename, valid range: [1,2, .. 86400]
+    - etc.
 
 - I also assume a simple time zone as we are told not to care about the time zone field.
 
